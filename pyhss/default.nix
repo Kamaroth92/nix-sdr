@@ -17,16 +17,24 @@ buildPythonPackage rec {
     sha256 = "sha256-O4FrZdWT1Pr5RqRbChb+jHkA45xXpwnihFpgP2+VL+c=";
   };
 
-  postPatch = ''
-    cat > setup.py <<EOF
-    setuptools.setup(
-        name = "${pname}",
-        version = "${version}",
-        package_dir = { "": "lib" },
-        scripts = [ 'hss.py' ]
+  preBuild = ''
+    cat > setup.py << EOF
+    from setuptools import setup
+    
+    with open('requirements.txt') as f:
+        install_requires = f.read().splitlines()
+    
+    setup(
+      name = "${pname}",
+      version = "${version}",
+      package_dir = { "": "lib" },
+      install_requires=install_requires,
+      scripts=['hss.py']
     )
     EOF
+  '';
 
+  postPatch = ''
     # need to be in the same package
     mv diameter.py lib/
     mv database.py lib/
