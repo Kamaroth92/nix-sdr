@@ -39,8 +39,10 @@ in stdenv.mkDerivation rec {
     cp -R --no-preserve=mode,ownership ${diameter} subprojects/freeDiameter
     cp -R --no-preserve=mode,ownership ${libtins} subprojects/libtins
     cp -R --no-preserve=mode,ownership ${promc} subprojects/prometheus-client-c
+    grep -Fl '@localstatedir@/log/open5gs/' `find . -type f ` | while read f ; do
+      substituteInPlace "$f" --replace '@localstatedir@/log/open5gs/' '/log/open5gs/' ;
+    done ;    
   '';
-
   nativeBuildInputs = [
     ninja
     meson
