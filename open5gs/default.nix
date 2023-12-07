@@ -51,7 +51,7 @@ in stdenv.mkDerivation rec {
     bison
   ];
 
-  mesonFlags = [ "-Dwerror=false" "--buildtype=release" "--localstatedir /open5gs"];
+  mesonFlags = [ "-Dwerror=false" "--buildtype=release" ];
 
   # Fails in libtins (DHCPv6)
   env.NIX_CFLAGS_COMPILE = builtins.toString [
