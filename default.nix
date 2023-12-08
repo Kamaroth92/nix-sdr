@@ -101,9 +101,9 @@ with super;
         callPackage = lib.callPackageWith (self // pSelf);
       in {
         alchemyjsonschema = callPackage ./alchemyjsonschema {};
-        dictknife = callPackage ./dictknife {};
-        magicalimport = callPackage ./magicalimport {};
-        osmo-python = callPackage ./osmo-python {};
+        #dictknife = callPackage ./dictknife {};
+        #magicalimport = callPackage ./magicalimport {};
+        #osmo-python = callPackage ./osmo-python {};
         pyhss = callPackage ./pyhss {};
         pysctp = callPackage ./pysctp {};
       });
