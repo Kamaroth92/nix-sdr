@@ -18,6 +18,8 @@ with super;
 
   fdk_aacDab = callPackage ./fdk-aac {};
 
+  dictknife = callPackage ./dictknife {};
+
   fdk-aac-hdc = callPackage ./fdk-aac/hdc.nix {};
 
   gr-nrsc5 = gnuradio3_9.pkgs.callPackage ./gr-nrsc5 {};
